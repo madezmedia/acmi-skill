@@ -1,0 +1,29 @@
+{
+  "expectations": [
+    {
+      "text": "Calls acmi_bootstrap or acmi_get on the agent",
+      "passed": true,
+      "evidence": "Called: ['acmi_spawn', 'acmi_bootstrap', 'acmi_active', 'acmi_cat', 'acmi_work_list', 'acmi_work_get', 'acmi_work_get', 'acmi_event', 'acmi_event']"
+    },
+    {
+      "text": "Calls acmi_spawn at session start",
+      "passed": true,
+      "evidence": "Called: ['acmi_spawn', 'acmi_bootstrap', 'acmi_active', 'acmi_cat', 'acmi_work_list', 'acmi_work_get', 'acmi_work_get', 'acmi_event', 'acmi_event']"
+    },
+    {
+      "text": "Reads cross-thread context via acmi_cat",
+      "passed": true,
+      "evidence": "Called: ['acmi_spawn', 'acmi_bootstrap', 'acmi_active', 'acmi_cat', 'acmi_work_list', 'acmi_work_get', 'acmi_work_get', 'acmi_event', 'acmi_event']"
+    },
+    {
+      "text": "User response surfaces handoffs explicitly",
+      "passed": true,
+      "evidence": "found 'handoff' or 'delegation' in response"
+    },
+    {
+      "text": "User response is prioritized (mentions priority order)",
+      "passed": true,
+      "evidence": "found priority signal"
+    }
+  ]
+}

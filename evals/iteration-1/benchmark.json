@@ -1,0 +1,80 @@
+{
+  "skill_name": "acmi",
+  "iteration": 1,
+  "evals": [
+    {
+      "eval_id": "eval-1-fresh-session-bootstrap",
+      "configs": {
+        "with_skill": {
+          "pass_rate": 1.0,
+          "passes": 5,
+          "total": 5,
+          "tokens": 81803,
+          "duration_ms": 70126
+        },
+        "without_skill": {
+          "pass_rate": 0.8,
+          "passes": 4,
+          "total": 5,
+          "tokens": 69690,
+          "duration_ms": 40180
+        }
+      }
+    },
+    {
+      "eval_id": "eval-2-log-milestone-with-chain",
+      "configs": {
+        "with_skill": {
+          "pass_rate": 1.0,
+          "passes": 6,
+          "total": 6,
+          "tokens": 85499,
+          "duration_ms": 41274
+        },
+        "without_skill": {
+          "pass_rate": 0.3333333333333333,
+          "passes": 2,
+          "total": 6,
+          "tokens": 68356,
+          "duration_ms": 26478
+        }
+      }
+    },
+    {
+      "eval_id": "eval-3-session-end-rollup",
+      "configs": {
+        "with_skill": {
+          "pass_rate": 1.0,
+          "passes": 6,
+          "total": 6,
+          "tokens": 81662,
+          "duration_ms": 62629
+        },
+        "without_skill": {
+          "pass_rate": 0.6666666666666666,
+          "passes": 4,
+          "total": 6,
+          "tokens": 69159,
+          "duration_ms": 30264
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "with_skill": {
+      "mean_pass_rate": 1.0,
+      "stddev_pass_rate": 0.0,
+      "mean_tokens": 82988,
+      "mean_duration_ms": 58009.666666666664,
+      "n": 3
+    },
+    "without_skill": {
+      "mean_pass_rate": 0.6,
+      "stddev_pass_rate": 0.24037008503093266,
+      "mean_tokens": 69068.33333333333,
+      "mean_duration_ms": 32307.333333333332,
+      "n": 3
+    },
+    "delta_pass_rate": 0.4
+  }
+}

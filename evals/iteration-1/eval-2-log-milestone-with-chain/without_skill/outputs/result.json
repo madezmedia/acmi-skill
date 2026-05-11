@@ -1,0 +1,33 @@
+{
+  "tool_calls": [
+    {
+      "tool": "mcp__acmi__acmi_work_event",
+      "input": {
+        "workId": "amd-hackathon-multi-framework-acmi",
+        "eventType": "milestone-shipped",
+        "addressedTo": ["@bentley", "@mikey", "@claude-web"],
+        "correlationId": "mikeyDeadlineDayDecisions-1778390495224",
+        "payload": {
+          "milestone": "Cross-linked acmi and acmi-product GitHub repos",
+          "artifacts": [
+            {
+              "type": "pull_request",
+              "repo": "acmi",
+              "number": 6,
+              "status": "open"
+            },
+            {
+              "type": "pull_request",
+              "repo": "acmi-product",
+              "number": 23,
+              "status": "open"
+            }
+          ],
+          "summary": "Cross-linking PRs opened between acmi (#6) and acmi-product (#23) to wire the two repos together."
+        }
+      }
+    }
+  ],
+  "user_response": "Dry-run: I'd log a 'milestone-shipped' event on work item 'amd-hackathon-multi-framework-acmi' via acmi_work_event, addressed to @bentley, @mikey, and @claude-web, with parent correlationId 'mikeyDeadlineDayDecisions-1778390495224'. The payload references the two open cross-linking PRs (acmi #6, acmi-product #23). Confirm and I'll fire the call.",
+  "reasoning": "Based on the acmi_* tool naming, acmi_work_event is the right primitive for emitting an event scoped to an existing work item (versus acmi_event which appears agent-scoped). I included workId, an explicit eventType of 'milestone-shipped', the three addressees, and the provided correlationId so this event chains to the parent decision thread. The payload captures both PRs as structured artifacts so downstream consumers can render or query them."
+}

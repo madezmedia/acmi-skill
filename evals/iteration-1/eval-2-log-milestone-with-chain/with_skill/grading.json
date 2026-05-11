@@ -1,0 +1,34 @@
+{
+  "expectations": [
+    {
+      "text": "Uses acmi_work_event (work-item-aware) not raw acmi_event",
+      "passed": true,
+      "evidence": "called: acmi_work_event"
+    },
+    {
+      "text": "Uses only real MCP parameter names (no invented like workId/eventType/addressedTo)",
+      "passed": true,
+      "evidence": "params=['correlationId', 'id', 'kind', 'source', 'summary'], valid=['id', 'sessionId', 'source', 'summary'], red-flags-found=[]"
+    },
+    {
+      "text": "Generates a NEW correlationId, does not reuse the parent's",
+      "passed": true,
+      "evidence": "correlationId='acmiProductRepoCrossLinkPRsOpen-1778457600000', parent='mikeyDeadlineDayDecisions-1778390495224'"
+    },
+    {
+      "text": "correlationId follows <descCamel>-<msEpoch> form",
+      "passed": true,
+      "evidence": "correlationId='acmiProductRepoCrossLinkPRsOpen-1778457600000'"
+    },
+    {
+      "text": "Summary follows [kind-tag @recipient ...] convention",
+      "passed": true,
+      "evidence": "summary='[milestone-shipped @bentley @mikey @claude-web child-of mikeyDeadlineDayDecisions-1778390495224] Cross-linked acmi + acm'"
+    },
+    {
+      "text": "Documents the parentCorrelationId MCP-vs-SDK workaround",
+      "passed": true,
+      "evidence": "documented"
+    }
+  ]
+}

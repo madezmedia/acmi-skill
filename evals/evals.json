@@ -1,0 +1,26 @@
+{
+  "skill_name": "acmi",
+  "evals": [
+    {
+      "id": 1,
+      "name": "fresh-session-bootstrap",
+      "prompt": "I'm starting a fresh Claude session as agent:claude-engineer. Bring me up to speed using ACMI — what was I working on, what handoffs are open, and what should I do first this morning? Use the acmi_* MCP tools.",
+      "expected_output": "Claude calls acmi_spawn then acmi_bootstrap (or acmi_get on agent:claude-engineer + acmi_cat on agent-coordination thread), reads the rollup + recent timeline, and produces a prioritized list of what to do first with handoffs explicitly called out.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "log-milestone-with-chain",
+      "prompt": "I just finished cross-linking the acmi and acmi-product GitHub repos (PRs #6 and #23 are open). Log this as a milestone-shipped event on the amd-hackathon-multi-framework-acmi work item, addressed to @bentley @mikey @claude-web. The parent correlationId is mikeyDeadlineDayDecisions-1778390495224. Make sure the event follows the correct ACMI conventions.",
+      "expected_output": "Claude generates a correctly-formed event with kind='milestone-shipped', summary using [kind-tag @recipient] convention, a fresh camelCase correlationId with ms epoch suffix, and references parentCorrelationId. It calls acmi_work_event (or acmi_event with namespace=work, id=amd-hackathon-multi-framework-acmi). It notes the v1.3.0 MCP limitation that parentCorrelationId isn't a named param yet (and either embeds in summary or uses SDK).",
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "session-end-rollup",
+      "prompt": "I'm wrapping up my session as agent:claude-engineer. Today I shipped the Smithery quality-score fix (cid claudeEngineerSmitheryQualityWin-1778174324664), debugged the configSchema OAuth issue, and the smithery-specialist work item is still in DRAFT pending Mikey's incognito-form verification. Write me a rollup that the next session will actually find useful, and post it via acmi_rollup_set.",
+      "expected_output": "Claude produces a rollup JSON with session_summary, decisions_made, open_blockers, next_session_priorities, and key_correlation_ids. The rollup goes beyond paraphrasing the timeline — it captures cross-session intent. It calls acmi_rollup_set with the JSON-stringified rollup.",
+      "files": []
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "tool_calls": [
+    {
+      "tool": "mcp__acmi__acmi_work_event",
+      "input": {
+        "id": "amd-hackathon-multi-framework-acmi",
+        "source": "agent:claude-web",
+        "kind": "milestone-shipped",
+        "correlationId": "acmiProductRepoCrossLinkPRsOpen-1778457600000",
+        "summary": "[milestone-shipped @bentley @mikey @claude-web child-of mikeyDeadlineDayDecisions-1778390495224] Cross-linked acmi + acmi-product GitHub repos — PRs #6 and #23 OPEN, ready for review."
+      }
+    }
+  ],
+  "user_response": "Logged the cross-link milestone as a work-event on `work:amd-hackathon-multi-framework-acmi` via `acmi_work_event`.\n\n- kind: `milestone-shipped`\n- correlationId: `acmiProductRepoCrossLinkPRsOpen-1778457600000` (descriptiveCamelCase + msEpoch)\n- recipients: @bentley @mikey @claude-web in the `[kind @recipients]` summary prefix\n- parent chain: embedded `child-of mikeyDeadlineDayDecisions-1778390495224` in the summary because MCP v1.3.0 doesn't expose `parentCorrelationId` as a named param (per sdk-mcp-drift.md). When the MCP server adds the field, future events should use it natively.\n\nFollow-up events on this milestone should use `parentCorrelationId=acmiProductRepoCrossLinkPRsOpen-1778457600000`.",
+  "reasoning": "Used `acmi_work_event` rather than raw `acmi_event` because patterns.md #11 mandates the dedicated work-item tools so work-aware UIs (ops-center, dashboards) light up. Followed the `[kind @recipient ...] description` summary convention from namespace-guide.md and the `<descriptiveCamelCase>-<msEpoch>` correlationId format. Worked around the MCP `parentCorrelationId` gap (sdk-mcp-drift.md) by embedding `child-of <cid>` in the summary, which is the documented stopgap until the field is exposed."
+}

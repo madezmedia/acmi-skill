@@ -1,0 +1,76 @@
+{
+  "tool_calls": [
+    {
+      "tool": "acmi_rollup_set",
+      "input": {
+        "agent": "claude-engineer",
+        "rollup": {
+          "session_date": "2026-05-10",
+          "agent": "claude-engineer",
+          "summary": "Shipped Smithery quality-score fix; debugged configSchema OAuth issue; smithery-specialist work item remains in DRAFT pending verification by Mikey.",
+          "shipped": [
+            {
+              "title": "Smithery quality-score fix",
+              "cid": "claudeEngineerSmitheryQualityWin-1778174324664",
+              "status": "shipped"
+            }
+          ],
+          "debugged": [
+            {
+              "title": "configSchema OAuth issue",
+              "notes": "Root-caused during session. Check related cid above for context and any follow-up patches needed."
+            }
+          ],
+          "open_work_items": [
+            {
+              "name": "smithery-specialist",
+              "status": "DRAFT",
+              "blocker": "Awaiting Mikey's incognito-form verification before promoting out of DRAFT.",
+              "next_action": "Ping Mikey for verification result; if pass, move from DRAFT to active and assign owner."
+            }
+          ],
+          "context_for_next_session": [
+            "Start by checking smithery-specialist work item state — it may have moved if Mikey verified.",
+            "The Smithery quality-score win (cid claudeEngineerSmitheryQualityWin-1778174324664) is the canonical reference for the fix pattern; reuse it for any similar quality-score regressions.",
+            "configSchema OAuth debugging notes should be referenced if any further OAuth-related Smithery issues appear."
+          ],
+          "handoff_notes": "No active blockers on the engineer side. Next session should poll for Mikey's verification on smithery-specialist before doing new work on it."
+        }
+      }
+    }
+  ],
+  "user_response": "Drafted and posted your session rollup via acmi_rollup_set under agent:claude-engineer. It captures the Smithery quality-score ship (with cid), the configSchema OAuth debug, and flags smithery-specialist as DRAFT pending Mikey's incognito-form verification — with a clear next-action so the next session picks up cleanly.",
+  "reasoning": "This rollup is useful because it preserves the load-bearing identifiers (the cid for the shipped fix) so the next session can locate the artifact rather than re-deriving it, and it explicitly names the blocker (Mikey's incognito-form verification) plus the next action, which is what an incoming agent actually needs. It separates shipped vs debugged vs open work so triage at session start is a scan, not a read.",
+  "rollup_object": {
+    "session_date": "2026-05-10",
+    "agent": "claude-engineer",
+    "summary": "Shipped Smithery quality-score fix; debugged configSchema OAuth issue; smithery-specialist work item remains in DRAFT pending verification by Mikey.",
+    "shipped": [
+      {
+        "title": "Smithery quality-score fix",
+        "cid": "claudeEngineerSmitheryQualityWin-1778174324664",
+        "status": "shipped"
+      }
+    ],
+    "debugged": [
+      {
+        "title": "configSchema OAuth issue",
+        "notes": "Root-caused during session. Check related cid above for context and any follow-up patches needed."
+      }
+    ],
+    "open_work_items": [
+      {
+        "name": "smithery-specialist",
+        "status": "DRAFT",
+        "blocker": "Awaiting Mikey's incognito-form verification before promoting out of DRAFT.",
+        "next_action": "Ping Mikey for verification result; if pass, move from DRAFT to active and assign owner."
+      }
+    ],
+    "context_for_next_session": [
+      "Start by checking smithery-specialist work item state — it may have moved if Mikey verified.",
+      "The Smithery quality-score win (cid claudeEngineerSmitheryQualityWin-1778174324664) is the canonical reference for the fix pattern; reuse it for any similar quality-score regressions.",
+      "configSchema OAuth debugging notes should be referenced if any further OAuth-related Smithery issues appear."
+    ],
+    "handoff_notes": "No active blockers on the engineer side. Next session should poll for Mikey's verification on smithery-specialist before doing new work on it."
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "expectations": [
+    {
+      "text": "Uses acmi_work_event (work-item-aware) not raw acmi_event",
+      "passed": true,
+      "evidence": "called: acmi_work_event"
+    },
+    {
+      "text": "Uses only real MCP parameter names (no invented like workId/eventType/addressedTo)",
+      "passed": false,
+      "evidence": "params=['addressedTo', 'correlationId', 'eventType', 'payload', 'workId'], valid=['id', 'sessionId', 'source', 'summary'], red-flags-found=['addressedTo', 'eventType', 'workId']"
+    },
+    {
+      "text": "Generates a NEW correlationId, does not reuse the parent's",
+      "passed": false,
+      "evidence": "correlationId='mikeyDeadlineDayDecisions-1778390495224', parent='mikeyDeadlineDayDecisions-1778390495224'"
+    },
+    {
+      "text": "correlationId follows <descCamel>-<msEpoch> form",
+      "passed": true,
+      "evidence": "correlationId='mikeyDeadlineDayDecisions-1778390495224'"
+    },
+    {
+      "text": "Summary follows [kind-tag @recipient ...] convention",
+      "passed": false,
+      "evidence": "summary=''"
+    },
+    {
+      "text": "Documents the parentCorrelationId MCP-vs-SDK workaround",
+      "passed": false,
+      "evidence": "not documented"
+    }
+  ]
+}

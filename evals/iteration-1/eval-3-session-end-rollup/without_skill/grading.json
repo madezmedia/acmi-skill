@@ -1,0 +1,34 @@
+{
+  "expectations": [
+    {
+      "text": "Calls acmi_rollup_set",
+      "passed": true,
+      "evidence": "called: ['acmi_rollup_set']"
+    },
+    {
+      "text": "Rollup has session_summary key (or close synonym)",
+      "passed": true,
+      "evidence": "keys=['session_date', 'agent', 'summary', 'shipped', 'debugged', 'open_work_items', 'context_for_next_session', 'handoff_notes']"
+    },
+    {
+      "text": "Rollup captures open_blockers / pending_items",
+      "passed": false,
+      "evidence": "keys=['session_date', 'agent', 'summary', 'shipped', 'debugged', 'open_work_items', 'context_for_next_session', 'handoff_notes']"
+    },
+    {
+      "text": "Rollup defines next-session priorities",
+      "passed": false,
+      "evidence": "keys=['session_date', 'agent', 'summary', 'shipped', 'debugged', 'open_work_items', 'context_for_next_session', 'handoff_notes']"
+    },
+    {
+      "text": "Rollup preserves key correlationIds for cross-session linking",
+      "passed": true,
+      "evidence": "cid preserved"
+    },
+    {
+      "text": "Rollup is structured (multi-key) not just a paragraph",
+      "passed": true,
+      "evidence": "key count=8"
+    }
+  ]
+}

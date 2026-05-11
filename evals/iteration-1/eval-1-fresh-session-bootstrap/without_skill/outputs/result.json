@@ -1,0 +1,120 @@
+{
+  "tool_calls": [
+    {
+      "tool": "acmi_bootstrap",
+      "params": {
+        "agent": "claude-engineer",
+        "session": "fresh"
+      }
+    },
+    {
+      "tool": "acmi_active",
+      "params": {
+        "agent": "claude-engineer"
+      }
+    },
+    {
+      "tool": "acmi_profile",
+      "params": {
+        "agent": "claude-engineer"
+      }
+    },
+    {
+      "tool": "acmi_work_list",
+      "params": {
+        "assignee": "claude-engineer",
+        "status": ["in_progress", "blocked", "handoff_pending"],
+        "limit": 50,
+        "sort": "updated_desc"
+      }
+    },
+    {
+      "tool": "acmi_list",
+      "params": {
+        "channel": "handoffs",
+        "to": "claude-engineer",
+        "status": "open",
+        "limit": 25,
+        "sort": "created_desc"
+      }
+    },
+    {
+      "tool": "acmi_list",
+      "params": {
+        "channel": "signals",
+        "to": "claude-engineer",
+        "since": "2026-05-09T00:00:00Z",
+        "limit": 50
+      }
+    },
+    {
+      "tool": "acmi_list",
+      "params": {
+        "channel": "events",
+        "actor": "claude-engineer",
+        "since": "2026-05-09T00:00:00Z",
+        "limit": 30,
+        "sort": "created_desc"
+      }
+    },
+    {
+      "tool": "acmi_work_get",
+      "params": {
+        "work_id": "wrk_8421_auth_refactor"
+      }
+    },
+    {
+      "tool": "acmi_work_get",
+      "params": {
+        "work_id": "wrk_8447_billing_webhook_bug"
+      }
+    },
+    {
+      "tool": "acmi_work_get",
+      "params": {
+        "work_id": "wrk_8455_db_migration_review"
+      }
+    },
+    {
+      "tool": "acmi_get",
+      "params": {
+        "message_id": "msg_handoff_3391"
+      }
+    },
+    {
+      "tool": "acmi_get",
+      "params": {
+        "message_id": "msg_handoff_3402"
+      }
+    },
+    {
+      "tool": "acmi_cat",
+      "params": {
+        "thread_id": "thr_auth_refactor_review",
+        "tail": 20
+      }
+    },
+    {
+      "tool": "acmi_rollup_set",
+      "params": {
+        "agent": "claude-engineer",
+        "key": "morning_brief_2026-05-10",
+        "summary": "Bootstrapped fresh session. 3 active work items; top priority: unblock wrk_8447 (billing webhook 500s in prod). 2 open handoffs from agent:claude-reviewer pending response."
+      }
+    },
+    {
+      "tool": "acmi_signal",
+      "params": {
+        "from": "claude-engineer",
+        "channel": "presence",
+        "type": "session_started",
+        "payload": {
+          "session_id": "fresh",
+          "date": "2026-05-10"
+        }
+      }
+    }
+  ],
+  "user_response": "Good morning. I've pulled state from ACMI for agent:claude-engineer. Here's where you stand:\n\n**Active work (3 items)**\n1. wrk_8447 — Billing webhook bug (P0, in_progress, blocked) — Stripe webhook handler returning 500s in prod since yesterday 18:42 UTC. Partial root-cause noted: signature verification race after the idempotency-key refactor. Last commit on branch fix/billing-webhook-race two commits ahead, tests not yet green.\n2. wrk_8421 — Auth refactor (P1, in_progress) — PR #1284 open, awaiting your response to claude-reviewer's comments on the session-token rotation logic.\n3. wrk_8455 — DB migration review (P2, handoff_pending) — claude-architect requested you review migration 0042_orders_partition before EOD.\n\n**Open handoffs to you (2)**\n- msg_handoff_3391 from claude-reviewer (yesterday 21:10 UTC): 4 review comments on PR #1284, 2 marked blocking.\n- msg_handoff_3402 from claude-architect (this morning 06:55 UTC): partition strategy decision needed on 0042_orders_partition — async vs. online.\n\n**Recent signals**\n- Pager fired twice overnight on the billing webhook (linked to wrk_8447).\n- CI pipeline on main went red at 02:14 UTC — flake on integration_test_payments, claude-ops already retried and it's green now.\n\n**Recommended order for this morning**\n1. **First (next ~60 min):** Finish wrk_8447 — the prod 500s are still firing. Reproduce locally with the failing webhook payload captured in the work item's attachments, land the race-fix, get tests green, deploy.\n2. **Second (~30 min):** Reply to claude-reviewer's blocking comments on PR #1284 (wrk_8421) so that PR isn't idle another day.\n3. **Third (~20 min):** Respond to claude-architect on wrk_8455 with your async-vs-online recommendation; the migration is otherwise ready to schedule.\n\nWant me to open wrk_8447 and start on the race-fix repro?",
+  "reasoning": "Order goes broad-to-narrow: bootstrap and identity first so the bus knows the session is live, then list active work, inbound handoffs, and recent signals/events to build the full picture. Then I fetch detail on the specific work items and handoff messages surfaced by those lists, and tail the most relevant thread. Finally I write a rollup summary so the next agent (or future-me) gets a one-line state snapshot, and emit a presence signal so other agents see claude-engineer is online."
+}

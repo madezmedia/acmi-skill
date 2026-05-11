@@ -1,0 +1,82 @@
+[
+  {
+    "query": "im starting up a fresh claude code session as agent:claude-engineer. can you pull my rollup + the agent-coordination thread events from the last 24h via acmi and tell me what's open from yesterday before i merge that PR",
+    "should_trigger": true
+  },
+  {
+    "query": "we shipped the cross-link PRs (acmi #6 + acmi-product #23) — log this on the amd-hackathon-multi-framework-acmi work item, milestone-shipped, addressed to @bentley @mikey, parent cid is mikeyDeadlineDayDecisions-1778390495224. make sure the correlationId follows the convention",
+    "should_trigger": true
+  },
+  {
+    "query": "im about to sign off — write me a rollup for claude-engineer that captures (a) smithery quality score now at 90, (b) blocked on mikey verifying form renders in incognito, (c) next session should start with the OAuth flow regression. post it via acmi_rollup_set",
+    "should_trigger": true
+  },
+  {
+    "query": "what does our Profile/Signals/Timeline pattern look like for a new work item that bentley is going to own? i need to acmi_work_create it but i forget the canonical profile shape",
+    "should_trigger": true
+  },
+  {
+    "query": "the acmi_event tool is throwing on parentCorrelationId — i thought v1.3 supported chaining? is there a drift between the sdk and the mcp wrapper or am i holding it wrong",
+    "should_trigger": true
+  },
+  {
+    "query": "set up the @madezmedia/acmi-mcp server in my claude desktop config — i have the upstash creds, walk me through where to paste them so the 16 tools light up",
+    "should_trigger": true
+  },
+  {
+    "query": "trace the incident chain backwards from this correlationId: incident-secrets-leak-acmi-protocol-repo-1778419629871 — i want to see the parent events and what kicked it off in the agent-coordination thread",
+    "should_trigger": true
+  },
+  {
+    "query": "bentley just delegated the smithery scan debug to me — what's the right kind tag for the handoff-ack event and where does the parent correlationId go since the mcp tool doesn't have it as a named param",
+    "should_trigger": true
+  },
+  {
+    "query": "claude-engineer was working on the configSchema OAuth issue last night, can you bring me up to speed on where he left off? bootstrap his agent and show me the recent timeline",
+    "should_trigger": true
+  },
+  {
+    "query": "im publishing our acmi mcp to smithery and the quality score is stuck at 79 — the listing already exists at madezmediapartners/acmi-mcp but i want to log the score regression on the smithery-specialist-agent work item",
+    "should_trigger": true
+  },
+  {
+    "query": "what's the latency on my upstash redis instance? im seeing 200ms reads from us-east and i want to switch regions",
+    "should_trigger": false
+  },
+  {
+    "query": "i need to set up mem0 as my agent's memory backend instead of pinecone — what's the python sdk for storing user preferences across sessions",
+    "should_trigger": false
+  },
+  {
+    "query": "datadog is showing a correlationId chain on my checkout flow that breaks at the payment gateway — can you trace it through the distributed tracing UI",
+    "should_trigger": false
+  },
+  {
+    "query": "i need to hand off this ticket to duane (he's our CHO) — write a slack DM that summarizes the customer escalation and the three options we discussed",
+    "should_trigger": false
+  },
+  {
+    "query": "the smithery listing for filesystem-mcp is failing scan — can you check their server-card.json and tell me what's off about the configSchema syntax",
+    "should_trigger": false
+  },
+  {
+    "query": "create a jira work item for the q3 onboarding redesign and assign it to the design pod — should be P1 and link to the figma file",
+    "should_trigger": false
+  },
+  {
+    "query": "explain how the websocket protocol handles backpressure when the client falls behind — i want to know if i need to implement my own buffering",
+    "should_trigger": false
+  },
+  {
+    "query": "remember that mikey prefers shadcn for UI components over chakra — keep that in mind for the rest of this conversation",
+    "should_trigger": false
+  },
+  {
+    "query": "im setting up a multi-agent crewai pipeline where the researcher hands off to a synthesizer — what does the crewai memory api look like for that handoff",
+    "should_trigger": false
+  },
+  {
+    "query": "log this customer feedback in linear so the product team sees it before standup — title 'pricing page bounce rate spike', tag with q2-2026 retention",
+    "should_trigger": false
+  }
+]

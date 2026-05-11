@@ -1,0 +1,51 @@
+{
+  "tool_calls": [
+    {
+      "tool": "acmi_rollup_set",
+      "arguments": {
+        "agentId": "claude-engineer",
+        "rollup": "{\"session_summary\":\"Shipped Smithery quality-score fix end-to-end and debugged the configSchema OAuth issue. Smithery-specialist work item still DRAFT pending Mikey's incognito-form verification before it can promote to RATIFIED.\",\"decisions_made\":[{\"id\":\"smithery-quality-fix-shipped\",\"rationale\":\"Quality-score regression resolved; root cause traced to configSchema OAuth handling. Fix shipped under cid claudeEngineerSmitheryQualityWin-1778174324664.\",\"cid\":\"claudeEngineerSmitheryQualityWin-1778174324664\"},{\"id\":\"configSchema-oauth-root-cause\",\"rationale\":\"OAuth flow was the configSchema breakage point — debugged in-session as part of the quality-score work, not a separate ticket.\",\"cid\":\"claudeEngineerSmitheryQualityWin-1778174324664\"}],\"open_blockers\":[\"smithery-specialist work item is in DRAFT — cannot promote to RATIFIED until Mikey verifies the form renders correctly in an incognito window. This is the single gate; everything else on that work item is ready.\"],\"next_session_priorities\":[\"1. First action on bootstrap: check if Mikey has posted incognito-form verification on smithery-specialist work item — if YES, promote DRAFT → RATIFIED via acmi_work_signal and log work-update event.\",\"2. If verification still pending, post a [hitl-required @mikey] nudge on user:mikey:open referencing the smithery-specialist cid.\",\"3. Confirm Smithery quality-score fix is holding in production (re-scan listing, target 90+).\",\"4. Resume any work paused behind the smithery-specialist DRAFT gate.\"],\"key_correlation_ids\":[\"claudeEngineerSmitheryQualityWin-1778174324664\"],\"work_items_touched\":[{\"id\":\"smithery-specialist\",\"status\":\"DRAFT\",\"gate\":\"awaiting Mikey incognito-form verification\"}],\"do_not_redo\":[\"Do NOT re-debug the configSchema OAuth issue — it's fixed and shipped under claudeEngineerSmitheryQualityWin-1778174324664. Read that event's payload before touching configSchema.\",\"Do NOT promote smithery-specialist past DRAFT without explicit Mikey verification on file.\"]}"
+      }
+    }
+  ],
+  "user_response": "Rollup posted to agent:claude-engineer. Next session's bootstrap will land on the Mikey incognito-verification gate as priority #1, with the shipped Smithery fix (cid claudeEngineerSmitheryQualityWin-1778174324664) flagged in do_not_redo so nobody re-debugs it. Sleep well.",
+  "reasoning": "This rollup follows patterns.md section 4: it captures cross-session intent rather than paraphrasing the timeline. The next session can already read the timeline events for what happened — the rollup's job is to surface the one decision that matters (smithery-specialist is gated on Mikey, nothing else), the trap to avoid (don't re-debug configSchema, it's done), and the exact first action to take on bootstrap. The do_not_redo field and the gate-specific next_session_priorities turn a 47-minute session into a 30-second resume.",
+  "rollup_object": {
+    "session_summary": "Shipped Smithery quality-score fix end-to-end and debugged the configSchema OAuth issue. Smithery-specialist work item still DRAFT pending Mikey's incognito-form verification before it can promote to RATIFIED.",
+    "decisions_made": [
+      {
+        "id": "smithery-quality-fix-shipped",
+        "rationale": "Quality-score regression resolved; root cause traced to configSchema OAuth handling. Fix shipped under cid claudeEngineerSmitheryQualityWin-1778174324664.",
+        "cid": "claudeEngineerSmitheryQualityWin-1778174324664"
+      },
+      {
+        "id": "configSchema-oauth-root-cause",
+        "rationale": "OAuth flow was the configSchema breakage point — debugged in-session as part of the quality-score work, not a separate ticket.",
+        "cid": "claudeEngineerSmitheryQualityWin-1778174324664"
+      }
+    ],
+    "open_blockers": [
+      "smithery-specialist work item is in DRAFT — cannot promote to RATIFIED until Mikey verifies the form renders correctly in an incognito window. This is the single gate; everything else on that work item is ready."
+    ],
+    "next_session_priorities": [
+      "1. First action on bootstrap: check if Mikey has posted incognito-form verification on smithery-specialist work item — if YES, promote DRAFT → RATIFIED via acmi_work_signal and log work-update event.",
+      "2. If verification still pending, post a [hitl-required @mikey] nudge on user:mikey:open referencing the smithery-specialist cid.",
+      "3. Confirm Smithery quality-score fix is holding in production (re-scan listing, target 90+).",
+      "4. Resume any work paused behind the smithery-specialist DRAFT gate."
+    ],
+    "key_correlation_ids": [
+      "claudeEngineerSmitheryQualityWin-1778174324664"
+    ],
+    "work_items_touched": [
+      {
+        "id": "smithery-specialist",
+        "status": "DRAFT",
+        "gate": "awaiting Mikey incognito-form verification"
+      }
+    ],
+    "do_not_redo": [
+      "Do NOT re-debug the configSchema OAuth issue — it's fixed and shipped under claudeEngineerSmitheryQualityWin-1778174324664. Read that event's payload before touching configSchema.",
+      "Do NOT promote smithery-specialist past DRAFT without explicit Mikey verification on file."
+    ]
+  }
+}

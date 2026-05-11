@@ -1,0 +1,44 @@
+{
+  "$schema": "https://anthropic.com/schemas/claude-plugin-marketplace.json",
+  "name": "madezmedia",
+  "displayName": "Mad EZ Media — ACMI Ecosystem",
+  "description": "Skills and plugins for the ACMI (Agentic Context Memory Interface) protocol. Persistent agent memory via Profile / Signals / Timeline.",
+  "owner": {
+    "name": "Mad EZ Media Partners",
+    "url": "https://github.com/madezmedia",
+    "email": "michael@madezmedia.com"
+  },
+  "homepage": "https://github.com/madezmedia/acmi-skill",
+  "plugins": [
+    {
+      "name": "acmi",
+      "displayName": "ACMI — Agentic Context Memory Interface",
+      "version": "1.0.0",
+      "description": "Universal operator playbook for ACMI — persistent agent memory via Profile/Signals/Timeline. Works across every Claude surface.",
+      "source": {
+        "type": "github",
+        "repository": "madezmedia/acmi-skill",
+        "ref": "v1.0.0"
+      },
+      "category": "memory-and-context",
+      "tags": [
+        "agent-memory",
+        "multi-agent",
+        "mcp",
+        "redis",
+        "upstash",
+        "protocol",
+        "context-management",
+        "fleet-coordination",
+        "correlation-id"
+      ],
+      "author": {
+        "name": "Mad EZ Media Partners",
+        "url": "https://github.com/madezmedia"
+      },
+      "homepage": "https://github.com/madezmedia/acmi-skill",
+      "license": "MIT",
+      "strict": false
+    }
+  ]
+}

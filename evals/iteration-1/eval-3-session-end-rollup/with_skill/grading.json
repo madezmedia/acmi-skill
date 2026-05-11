@@ -1,0 +1,34 @@
+{
+  "expectations": [
+    {
+      "text": "Calls acmi_rollup_set",
+      "passed": true,
+      "evidence": "called: ['acmi_rollup_set']"
+    },
+    {
+      "text": "Rollup has session_summary key (or close synonym)",
+      "passed": true,
+      "evidence": "keys=['session_summary', 'decisions_made', 'open_blockers', 'next_session_priorities', 'key_correlation_ids', 'work_items_touched', 'do_not_redo']"
+    },
+    {
+      "text": "Rollup captures open_blockers / pending_items",
+      "passed": true,
+      "evidence": "keys=['session_summary', 'decisions_made', 'open_blockers', 'next_session_priorities', 'key_correlation_ids', 'work_items_touched', 'do_not_redo']"
+    },
+    {
+      "text": "Rollup defines next-session priorities",
+      "passed": true,
+      "evidence": "keys=['session_summary', 'decisions_made', 'open_blockers', 'next_session_priorities', 'key_correlation_ids', 'work_items_touched', 'do_not_redo']"
+    },
+    {
+      "text": "Rollup preserves key correlationIds for cross-session linking",
+      "passed": true,
+      "evidence": "cid preserved"
+    },
+    {
+      "text": "Rollup is structured (multi-key) not just a paragraph",
+      "passed": true,
+      "evidence": "key count=7"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://anthropic.com/schemas/claude-plugin.json",
+  "name": "acmi",
+  "displayName": "ACMI — Agentic Context Memory Interface",
+  "version": "1.0.0",
+  "description": "Universal operator playbook for ACMI. Gives Claude persistent Profile/Signals/Timeline memory via the @madezmedia/acmi-mcp MCP server. Works across every Claude surface (Claude Code, Claude.ai, Desktop, Cowork, Cursor, Cline, Perplexity).",
+  "author": {
+    "name": "Mad EZ Media Partners",
+    "url": "https://github.com/madezmedia",
+    "email": "michael@madezmedia.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/madezmedia/acmi-skill",
+  "repository": "https://github.com/madezmedia/acmi-skill",
+  "category": "memory-and-context",
+  "tags": [
+    "agent-memory",
+    "multi-agent",
+    "mcp",
+    "redis",
+    "upstash",
+    "protocol",
+    "context-management"
+  ],
+  "skills": [
+    "./skill"
+  ],
+  "recommended_mcps": [
+    {
+      "name": "acmi-mcp",
+      "package": "@madezmedia/acmi-mcp",
+      "version": "^1.3.0",
+      "transport": "stdio",
+      "command": "acmi-mcp",
+      "config_schema": {
+        "UPSTASH_REDIS_REST_URL": {
+          "type": "string",
+          "required": true,
+          "description": "Upstash Redis REST URL (https://<id>.upstash.io)"
+        },
+        "UPSTASH_REDIS_REST_TOKEN": {
+          "type": "string",
+          "required": true,
+          "secret": true,
+          "description": "Upstash Redis REST token"
+        }
+      },
+      "alternatives": [
+        {
+          "transport": "streamable-http",
+          "url": "https://server.smithery.ai/@madezmediapartners/acmi-mcp/mcp",
+          "description": "Smithery-hosted variant — credentials managed per-user in your Smithery account"
+        }
+      ]
+    }
+  ]
+}
